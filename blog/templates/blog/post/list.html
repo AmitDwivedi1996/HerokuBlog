@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}BlogList{% endblock %}
+
+{% block content %}
+    <h1 >All blogs</h1>
+    {% for post in posts %}
+        <h2>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </h2>
+        <P>
+            Published {{ post.publish }} by {{ post.author }}
+        </P>
+        <p style="text-align:justify;">
+        {{ post.body }}{{ post.id }}</p>
+    {% endfor %}
+{% include "blog/pagination.html" with page=page_obj %}
+{% endblock %}
